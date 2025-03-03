@@ -6,7 +6,7 @@
     <title>Your Meme Cat</title>
   </head>
   <body>
-    <h1>You are: {{ meme_cat }}</h1>
+    <img src="{{ url_for('static', filename='cats/' + meme_cat + '.jpg') }}" alt="Your Meme Cat">
     <a href="{{ url_for('index') }}">Try Again</a>
   </body>
 </html>
