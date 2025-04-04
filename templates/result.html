@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Your Meme Cat</title>
+    <title>You are..:</title>
   </head>
   <body>
-    <img src="{{ url_for('static', filename='cats/' + meme_cat + '.jpg') }}" alt="Your Meme Cat">
+    <img src="{{ url_for('static', filename='cats/' + meme_cat + '.jpg') }}" alt="YOU ARE..:">
     <a href="{{ url_for('index') }}">Try Again</a>
   </body>
 </html>
