@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>You are..:</title>
+    <style>
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+      .grid-item {
+        text-align: center;
+      }
+      .grid-item img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+      }
+      .grid-item h2 {
+        margin: 10px 0;
+        font-size: 1.2em;
+      }
+    </style>
   </head>
   <body>
-    <img src="{{ url_for('static', filename='cats/' + meme_cat + '.jpg') }}" alt="YOU ARE..:">
-    <a href="{{ url_for('index') }}">Try Again</a>
+    <h1>You are..:</h1>
+    <!-- Grid container -->
+    <div class="grid-container">
+      <!-- Loop categories and display -->
+      {% for category, image_path in categories.items() %}
+        <div class="grid-item">
+          <h2>{{ category.capitalize() }}</h2>
+          <img src="{{ url_for('static', filename=image_path) }}" alt="{{ category }}">
+        </div>
+      {% endfor %}
+    </div>
+    <a href="{{ url_for('index') }}">Try again</a>
   </body>
 </html>

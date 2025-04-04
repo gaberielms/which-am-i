@@ -7,7 +7,7 @@ import numpy as np
 import random
 from collections import defaultdict
 
-embeddings = defaultdict(list) # {img_embedding: int(1-20)}
+embeddings = defaultdict(list) # {int(1-20): embedding}
 
 def get_image_embedding(image):
     img = face_recognition.load_image_file(image)
@@ -63,8 +63,12 @@ def index():
         if user_embeddings is None:
             return "No face detected", 400
         best_match = get_best_match(image)
-        cat = 'cat' + str(best_match)
-        return render_template('result.html', meme_cat=cat)
+        categories = {
+            'meme cat': 'cat/cat' + str(best_match) + '.jpg',
+            'brainrot': 'brainrot/br' + str(best_match) + '.jpg',
+            'italian brainrot': 'italian_brainrot/ib' + str(best_match) + '.jpg'
+        }
+        return render_template('result.html', categories=categories)
     return render_template('index.html')
 
 if __name__ == '__main__':
